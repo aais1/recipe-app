@@ -4,7 +4,7 @@ const Recipe = ({recipe}) => {
     console.log(recipe.idMeal);
     return (
     
-      <div className='h-[500px] md:h-[600px] w-[100%] border border-black hover:border-white rounded-md'>
+      <div className='h-[450px] md:h-[600px] w-[100%] border border-black hover:border-white rounded-md'>
         <Link to={`/recipe/${recipe.idMeal}`}>
         <img
           src={recipe.strMealThumb}
@@ -14,11 +14,11 @@ const Recipe = ({recipe}) => {
         />
         <div className='text-white m-1'>
             <div className="flex justify-between items-center ">
-                <h1 className='text-sm md:text-2xl'>{recipe.strMeal}</h1>
-                <p className='text-sm md:text-md'>{recipe.strArea}</p>
+                <h1 className='text-md font-bold md:text-2xl'>{recipe.strMeal}</h1>
+                <p className='text-xs font-extralight md:text-md'>{recipe.strArea}</p>
             </div>
-          <p className='mt-4 text-md md:text-lg line-clamp-6'>{recipe.strInstructions}</p>
-          <a href={recipe.strYoutube} target='_blank' rel='noreferrer' className="text-red-500 mt-8 hover:underline">Watch on Youtube</a>
+          <p className='mt-4 text-xs  md:text-lg line-clamp-6'>{recipe.strInstructions}</p>
+          <a href={recipe.strYoutube} target='_blank' rel='noreferrer' className="text-xs md:text-lg text-red-500 mt-8 hover:underline">Watch on Youtube</a>
         </div>
         </Link>
       </div>  
