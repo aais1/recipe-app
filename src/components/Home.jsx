@@ -1,5 +1,6 @@
 import {useEffect , useState} from "react";
 import RecipeCard from "./RecipeCard";
+import Loader from './Loader'
 
 const Home = () => {
   const [input, setInput] = useState("");
@@ -55,7 +56,7 @@ useEffect(() => {
 
   return (
     <div className="bg-slate-800 font-mono min-h-screen">
-      <div className="w-screen md:w-[70vw] mx-auto pt-[100px] text-center">
+      <div className="w-screen md:w-[70vw] mx-auto pt-[50px] text-center">
         <span className="text-4xl font-bold text-white underline underline-offset-4 hover:underline-offset-8 duration-200">
           Recipe Finder
         </span>
@@ -78,8 +79,8 @@ useEffect(() => {
       </div>
       {
         (loading) ? (
-          <div className="text-white text-center mt-10">
-            <h1>Loading...</h1>
+          <div className="mt-10 flex justify-center">
+            <Loader/>
           </div>
         ) :
         <div className="w-[95vw] mt-10 grid grid-cols-2 gap-2 md:gap-4 mx-auto md:w-[95vw] md:grid-cols-3">
@@ -92,7 +93,7 @@ useEffect(() => {
       }
               {
             (!recipes && !loading) && (
-                <div className="text-white text-center mt-10">
+                <div className="text-white text-2xl text-center mt-10">
                     <h1>No Recipes Found</h1>
                 </div>
             )

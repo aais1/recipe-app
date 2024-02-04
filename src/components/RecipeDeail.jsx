@@ -1,15 +1,19 @@
 import React from 'react'
 import { useParams } from 'react-router-dom';
+import Loader from './Loader';
 
 const RecipeDetail = () => {
         const [recipe,setRecipe]=React.useState({})
+        const [loading,setLoading]=React.useState(false)
         const {id}=useParams();
 
         const fetchRecipe=async()=>{
+                setLoading(true)
                 try {
                 const resp=await fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`)
                 const data=await resp.json()
                 setRecipe(data.meals[0])
+                setLoading(false)
                 } catch (error) {
                 console.error(error)
                 }
@@ -19,6 +23,10 @@ const RecipeDetail = () => {
                 fetchRecipe()
         },[])
     return (
+        <>
+        {
+                loading ? (<div className="flex items-center bg-slate-800 justify-center h-screen"><Loader/></div> ) :
+        
         <div className='bg-slate-800 min-h-screen'>
                 <div className='w-[80vw] mx-auto '>
                 <div className='flex-col flex md:flex-row justify-between mb-4 md:mb-0 p-4'>
@@ -54,6 +62,8 @@ const RecipeDetail = () => {
                 </div>
                 </div>
         </div>
+        }
+        </>
     )
 }
 
