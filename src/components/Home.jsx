@@ -86,7 +86,7 @@ useEffect(() => {
         <div className="w-[95vw] mt-10 grid grid-cols-2 gap-2 md:gap-4 mx-auto md:w-[95vw] md:grid-cols-3">
         {recipes?.length > 0 && (
           recipes.map((recipe) => (
-            <RecipeCard key={recipe.idMeal} recipe={recipe} />
+            <RecipeCard key={recipe.idMeal} {...recipe} />
           ))
         )}
       </div>
