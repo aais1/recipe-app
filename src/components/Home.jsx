@@ -49,8 +49,7 @@ useEffect(() => {
   
     fetchDataAndSetState(); // Call the async function
   
-  }, []); // The empty dependency array means this effect runs once, similar to componentDidMount
-  
+  }, [input]); // Include 'input' in the dependency array
 
   
 

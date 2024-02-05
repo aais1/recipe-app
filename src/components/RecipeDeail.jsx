@@ -2,10 +2,14 @@ import React from 'react'
 import { useParams } from 'react-router-dom';
 import Loader from './Loader';
 
+//this is a PAGE to show the details of a recipe 
+
 const RecipeDetail = () => {
         const [recipe,setRecipe]=React.useState({})
         const [loading,setLoading]=React.useState(false)
         const {id}=useParams();
+
+        document.title="Recipe Detail";
 
         const fetchRecipe=async()=>{
                 setLoading(true)
