@@ -14,17 +14,18 @@ const RecipeDetail = () => {
         const fetchRecipe = async () => {
                 setLoading(true);
                 try {
-                    const resp = await fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`);
-                    const data = await resp.json();
-                    const fetchedRecipe = data.meals[0];
-            
-                    if (fetchedRecipe && fetchedRecipe.strInstructions) {
-                        // Format strInstructions and update the state
-                        const formattedInstructions = fetchedRecipe.strInstructions.replace(/\n/g, '<br>');
-                        setRecipe(prevRecipe => ({ ...prevRecipe, strInstructions: formattedInstructions }));
-                    }
-            
-                    setLoading(false);
+                        const resp = await fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`);
+                        
+                        const data = await resp.json();
+
+                        setRecipe(data.meals[0]);   
+
+                        if(recipe?.strInstructions){
+                                const formattedInstructions = recipe.strInstructions.replace(/\n/g, '<br>');
+                                setRecipe((prevRecipe) => ({...prevRecipe, strInstructions: formattedInstructions}));
+                        }
+
+                        setLoading(false);
                 } catch (error) {
                     console.error(error);
                 }
@@ -71,7 +72,7 @@ const RecipeDetail = () => {
                 </div>
                 <div className='md:w-[80vw] mx-auto '>
                 <h1 className='text-2xl text-white 
-                 border-t pt-4'>Instructions :</h1>
+                 border-t my-6 pt-6'>Instructions :</h1>
                 <p className='text-white text-sm' dangerouslySetInnerHTML={{ __html: recipe.strInstructions }}></p>
 
                 </div>
